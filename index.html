@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ctxSip</title>
+    <link rel="icon" type="image/gif" href="img/favicon.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/ctxSip.css" rel="stylesheet" type="text/css" />
+
+    <script language="javascript">
+           
+        </script>
+
+
+</head>
+<body id="sipClient">
+<div class="container-fluid">
+
+    <div class="clearfix sipStatus">
+        <div id="txtCallStatus" class="pull-right">&nbsp;</div>
+        <div id="txtRegStatus"></div>
+    </div>
+
+    <div class="form-group" id="phoneUI">
+       
+            
+            
+            <center><img src="https://photographer.com.vn/wp-content/uploads/2020/08/1596889696_Anh-avatar-dep-va-doc-dao-lam-hinh-dai-dien.jpg" id="avatar"></center>>
+            
+             
+            </div>
+        <center>
+            <div id="infor">
+                 <div>
+                    <div class ="infor-left">
+                        Driver:
+                    </div>
+                    <div class="infor-right" id="driver-name-phone">
+                        Duy Phan | +0944889705
+                    </div>
+                </div>
+            </div>    
+            <div id="infor">
+                <div>
+                    <div class ="infor-left">
+                        Car:
+                    </div>
+                    <div class="infor-right">
+                        Sedan | RS2994
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="infor">
+                 <div>
+                    <div class ="infor-left">
+                        Passenger:
+                    </div>
+                    <div class="infor-right">
+                        Duy Phan
+                    </div>
+                </div>
+            </div>    
+
+            <div id="infor">
+                 <div>
+                    <div class ="infor-left">
+                        Pickup:
+                    </div>
+                    <div class="infor-right">
+                        02 Quang Trung
+                    </div>
+                </div>
+            </div>
+
+            <div id="infor">
+                 <div>
+                    <div class ="infor-left">
+                        Destination:
+                    </div>
+                    <div class="infor-right">
+                        271 Nguyen Van Linh
+                    </div>
+                </div>
+            </div>
+
+            <div id="infor">
+                 
+            </div>
+            
+
+            <div id="content">
+                <div >
+                    <button class="btn" id="btnCall" style="font-size:35px;color:#fefffe;"><i class="fa fa-phone"></i>
+                    </button>
+                </div>
+                
+                <div id="btn-call-left" style="display: none;">
+                    <button class="btn" id="btnMute" style="font-size:35px;color:#fefffe;"><i class="fa fa-microphone-slash"></i>
+                    </button>
+                </div>
+                <div id="btn-call-right" style="display: none;">
+                    <button class="btn" id="btnHangUp" style="font-size:35px;color:#fefffe;"><i class="fa fa-phone"></i>
+                    </button>
+                </div>
+            </div>
+             
+             
+            
+        </center>>
+            
+         
+
+           
+        </div>
+    </div>
+
+    
+
+    <div class="modal fade" id="mdlError" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Sip Error</h4>
+                </div>
+                <div class="modal-body text-center text-danger">
+                    <h3><i class="fa fa-3x fa-ban"></i></h3>
+                    <p class="lead">Sip registration failed. No calls can be handled.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<audio id="ringtone" src="sounds/incoming.mp3" loop></audio>
+<audio id="ringbacktone" src="sounds/outgoing.mp3" loop></audio>
+<audio id="dtmfTone" src="sounds/dtmf.mp3"></audio>
+<audio id="audioRemote"></audio>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="scripts/moment.js/moment.min.js"></script>
+
+<script type="text/javascript" src="scripts/SIP.js/sip.min.js"></script>
+<script type="text/javascript" src="scripts/config.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
+
+</body>
+</html>
