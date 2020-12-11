@@ -1,5 +1,5 @@
 #infor{
-width: 340px;
+width: 300px;
 min-height: 30px;
 float:center;
 margin-left: 5px;
@@ -8,7 +8,7 @@ margin-right: 5px;
 }
 
 .infor-left{
-width: 120px;
+width: 100px;
 min-height: 25px;
 float:left;
 margin-bottom: 5px;
@@ -17,7 +17,7 @@ text-align: left;
 }
 
 .infor-right{
-width: 120;
+width: 100;
 min-height: 25px;
 float:left;
 margin-bottom: 5px;
