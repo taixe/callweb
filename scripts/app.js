@@ -6,7 +6,10 @@ $(document).ready(function() {
     
 
     if (typeof(user) === 'undefined') {
-        user = JSON.parse(localStorage.getItem('SIPCreds'));
+        str = decodeURIComponent(escape(window.atob(localStorage.getItem('token'))));
+        console.log(str)
+        user = JSON.parse(str);
+        console.log(user)
     }
 
     ctxSip = {
