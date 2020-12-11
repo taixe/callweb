@@ -669,7 +669,7 @@ $(document).ready(function() {
     });
 
     $( "#btnCall" ).click(function() {
-        $('#btnCall').css('display', 'none');
+        $('#btn-call-center').css('display', 'none');
         $('#btn-call-left').css('display', 'block');
         $('#btn-call-right').css('display', 'block');
         ctxSip.phoneCallButtonPressed();
@@ -678,7 +678,7 @@ $(document).ready(function() {
     });
 
     $( "#btnHangUp" ).click(function() {
-        $('#btnCall').css('display', 'block');
+        $('#btn-call-center').css('display', 'block');
         $('#btn-call-left').css('display', 'none');
         $('#btn-call-right').css('display', 'none');
         ctxSip.sipHangUp(userTarget);

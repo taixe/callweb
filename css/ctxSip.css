@@ -1,5 +1,23 @@
+
+.flex-container {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+ 
+  justify-content: space-around;
+  align-items: baseline;
+}
+.flex-infor {
+  display: flex;
+  flex-direction: column;
+ 
+}
+.flex-avatar {
+  width: 80;
+  height:80;
+}
 #infor{
-width: 300px;
+width: 340px;
 min-height: 30px;
 float:center;
 margin-left: 5px;
@@ -8,7 +26,7 @@ margin-right: 5px;
 }
 
 .infor-left{
-width: 100px;
+width: 60px;
 min-height: 25px;
 float:left;
 margin-bottom: 5px;
@@ -17,7 +35,7 @@ text-align: left;
 }
 
 .infor-right{
-width: 100;
+width: 120;
 min-height: 25px;
 float:left;
 margin-bottom: 5px;
@@ -42,8 +60,8 @@ margin-bottom: 5px;
 }
 
 #avatar {
- width: 100px;
- height: 100px;
+ width: 60px;
+ height: 60px;
  border-radius:50% ;
 
 }
@@ -63,6 +81,11 @@ margin-bottom: 5px;
  transform: rotate(135deg);
  border-radius:50% ;
 }
+#btnHangUp:focus {
+  border: none;
+  outline:none;
+
+}
 #btnMute {
  width: 60px;
  height: 60px;
@@ -70,19 +93,32 @@ margin-bottom: 5px;
 
  border-radius:50% ;
 }
+#btnMute:focus {
+  border: none;
+  outline:none;
+
+}
 #btnCall {
  width: 60px;
  height: 60px;
- background-color: #53cb61;
+ background-color: #00b04e;
 
  border-radius:50% ;
+}
+#btnCall:focus {
+  border: none;
+  outline:none;
+
 }
 #btn {
  width: 60px;
  height: 60px;
  border-radius:50% ;
+  border: none;
+    outline:none;
 
 }
+
 #sipClient {
   background-color: #333;
   font-size: 13px;

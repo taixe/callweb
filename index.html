@@ -14,7 +14,10 @@
         console.log(token)
         localStorage.setItem('token', token);
     </script>
-    
+    <style>
+
+
+</style>
 
 </head>
 <body id="sipClient">
@@ -24,119 +27,65 @@
         <div id="txtCallStatus" class="pull-right">&nbsp;</div>
         <div id="txtRegStatus"></div>
     </div>
+    <center>
 
-    <div class="form-group" id="phoneUI">
-       
-            
-            
-            <center><img src="https://photographer.com.vn/wp-content/uploads/2020/08/1596889696_Anh-avatar-dep-va-doc-dao-lam-hinh-dai-dien.jpg" id="avatar"></center>>
-            
-             
-            </div>
-        <center>
-            <div id="infor">
-                 <div>
-                    <div class ="infor-left">
+
+        <div class="flex-container">
+            <div class="flex-avatar" style="flex-grow:1">
+              <img src="https://photographer.com.vn/wp-content/uploads/2020/08/1596889696_Anh-avatar-dep-va-doc-dao-lam-hinh-dai-dien.jpg" id="avatar">
+            </div> 
+            <div class="flex-infor " style="flex-grow:2">
+            <div >
+                    <div class ="infor-left" style="flex-grow:1">
                         Driver:
                     </div>
-                    <div class="infor-right" id="driver-name-phone">
+                    <div class="infor-right" id="driver-name-phone" style="flex-grow:2">
                         Driver | +XXX XXX XXXX
                     </div>
-                </div>
-            </div>    
-            <div id="infor">
-                <div>
-                    <div class ="infor-left">
+             </div>
+             <div >
+                    <div class ="infor-left" style="flex-grow:1">
                         Car:
                     </div>
-                    <div class="infor-right" id="vehicletype-platenumber">
+                    <div class="infor-right" id="vehicletype-platenumber" style="flex-grow:2">
                         Sedan | RS2994
                     </div>
                 </div>
-
             </div>
+        </div>
+        <div style="min-height: 10px;">
 
-            <!-- <div id="infor">
-                 <div>
-                    <div class ="infor-left">
-                        Passenger:
-                    </div>
-                    <div class="infor-right">
-                        Duy Phan
-                    </div>
-                </div>
-            </div>    
-
-            <div id="infor">
-                 <div>
-                    <div class ="infor-left">
-                        Pickup:
-                    </div>
-                    <div class="infor-right">
-                        02 Quang Trung
-                    </div>
-                </div>
-            </div>
-
-            <div id="infor">
-                 <div>
-                    <div class ="infor-left">
-                        Destination:
-                    </div>
-                    <div class="infor-right">
-                        271 Nguyen Van Linh
-                    </div>
-                </div>
-            </div> -->
-
-            <div id="infor">
-                 
-            </div>
-            
-
-            <div id="content">
-                <div >
+        </div>
+        <div style=" min-height: 1px; background-color: #252932"></div>
+        <div style="min-height: 10px;"> </div>
+         <div id="content">
+                <div id="btn-call-center">
                     <button class="btn" id="btnCall" style="font-size:35px;color:#fefffe;"><i class="fa fa-phone"></i>
                     </button>
+                    <div style="min-height: 10px;"></div>
+                    <div style="min-height: 35; color: #9a9b9a">Call</div>
                 </div>
                 
                 <div id="btn-call-left" style="display: none;">
                     <button class="btn" id="btnMute" style="font-size:35px;color:#fefffe;"><i class="fa fa-microphone-slash"></i>
                     </button>
+                    <div style="min-height: 10px;"></div>
+                    <div style="min-height: 35; color: #9a9b9a">Mute</div>
                 </div>
                 <div id="btn-call-right" style="display: none;">
                     <button class="btn" id="btnHangUp" style="font-size:35px;color:#fefffe;"><i class="fa fa-phone"></i>
                     </button>
+                    <div style="min-height: 10px;"></div>
+                    <div style="min-height: 35; color: #9a9b9a">Decline</div>
                 </div>
             </div>
              
-             
-            
-        </center>>
-            
-         
+    </center>
 
            
         </div>
     </div>
 
-    
-
-    <div class="modal fade" id="mdlError" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Sip Error</h4>
-                </div>
-                <div class="modal-body text-center text-danger">
-                    <h3><i class="fa fa-3x fa-ban"></i></h3>
-                    <p class="lead">Sip registration failed. No calls can be handled.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
 
 <audio id="ringtone" src="sounds/incoming.mp3" loop></audio>
 <audio id="ringbacktone" src="sounds/outgoing.mp3" loop></audio>
@@ -158,8 +107,10 @@
         let phone = params.get('phone')
         let plateNumber = params.get('plateNumber')
         let vehicleType = params.get('vehicleType')
+        let avatar = params.get('avatar')
         document.getElementById('driver-name-phone').innerHTML = driverName + " | " +phone ;
         document.getElementById('vehicletype-platenumber').innerHTML = vehicleType + " | " +plateNumber ;
+        document.getElementById('avatar').src= avatar
 
           
     </script>
