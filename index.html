@@ -111,7 +111,7 @@
 
         
 
-        document.getElementById('driver-name-phone').innerHTML = driverName.length>29?driverName.substring(0, 30)+"...":driverName + " | " +phone ;
+        document.getElementById('driver-name-phone').innerHTML = driverName.length>15?driverName.substring(0, 15)+"...":driverName + " | " +phone ;
         document.getElementById('vehicletype-platenumber').innerHTML = vehicleType + " | " +plateNumber ;
         document.getElementById('avatar').src= avatar
 
