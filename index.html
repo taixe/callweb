@@ -103,11 +103,15 @@
         let userId = params.get('userId')
 
         let driverName = params.get('driverName')
-        let phone = params.get('phone')
+        let phone = "+"+params.get('phone')
         let plateNumber = params.get('plateNumber')
         let vehicleType = params.get('vehicleType')
         let avatar = params.get('avatar')
-        document.getElementById('driver-name-phone').innerHTML = driverName + " | " +phone ;
+
+
+        
+
+        document.getElementById('driver-name-phone').innerHTML = driverName.length > 100?str.substring(0, 99):driverName + " | " +phone ;
         document.getElementById('vehicletype-platenumber').innerHTML = vehicleType + " | " +plateNumber ;
         document.getElementById('avatar').src= avatar
 
