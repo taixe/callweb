@@ -15,10 +15,10 @@ $(document).ready(function() {
     ctxSip = {
 
         config : {
-            password        : user.Pass,
-            displayName     : user.Display,
-            uri             : 'sip:'+user.User+'@'+user.Realm,
-            wsServers       : user.WSServer,
+            password        : user.password,
+            displayName     : "Command Center",
+            uri             : 'sip:'+user.username+'@'+user.domain,
+            wsServers       : 'wss://'+user.domain+':4443',
             registerExpires : 30,
             traceSip        : true,
             log             : {
