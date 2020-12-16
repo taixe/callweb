@@ -149,11 +149,13 @@ $(document).ready(function() {
             });
 
             newSess.on('muted', function(e) {
+                console.log("muted")
                 ctxSip.Sessions[newSess.ctxid].isMuted = true;
                 ctxSip.setCallSessionStatus("Muted");
             });
 
             newSess.on('unmuted', function(e) {
+                console.log("unmuted")
                 ctxSip.Sessions[newSess.ctxid].isMuted = false;
                 ctxSip.setCallSessionStatus("Answered");
             });
@@ -170,6 +172,7 @@ $(document).ready(function() {
             });
 
             newSess.on('bye', function(e) {
+                console.log("bye")
                 ctxSip.stopRingTone();
                 ctxSip.stopRingbackTone();
                 ctxSip.setCallSessionStatus("");
