@@ -8,12 +8,14 @@ $(document).ready(function() {
 
     if (typeof(user) === 'undefined') {
         str = decodeURIComponent(escape(window.atob(localStorage.getItem('token'))));
+        console.log(str)
         user = JSON.parse(str);
 
         var domain = user.domain.replace("ccvoip", fleetId);
         var phone = localStorage.getItem('phone');
         voipAcc = "sip:"+phone+"@"+domain;
 
+        console.log(user)
     }
 
     ctxSip = {
@@ -459,7 +461,7 @@ $(document).ready(function() {
 
 
             var s      = ctxSip.Sessions[sessionid],
-                //target = "sip:duy2@qa.voip.qup.vn"
+                target = voipAcc
                 userTarget = voipAcc
                 console.log(voipAcc)
             if (!s) {
