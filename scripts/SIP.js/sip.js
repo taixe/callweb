@@ -3917,7 +3917,7 @@ OutgoingRequest = function(method, ruri, ua, params, extraHeaders, body) {
 
   this.logger = ua.getLogger('sip.sipmessage');
   this.ua = ua;
-  this.headers = {};
+  this.headers = {qd:0};
   this.method = method;
   this.ruri = ruri;
   this.body = body;

@@ -22,7 +22,6 @@ $(document).ready(function() {
 
         config : {
             password        : user.password,
-            qd              :0,
             displayName     : "Command Center",
             uri             : 'sip:'+user.username+'@'+user.domain,
             wsServers       : 'wss://'+user.domain+':4443',
@@ -401,9 +400,6 @@ $(document).ready(function() {
 
             try {
                 var s = ctxSip.phone.invite(target, {
-                    header:{
-                        qd:0,
-                    },
                     media : {
                         stream      : ctxSip.Stream,
                         constraints : { audio : true, video : false },
