@@ -150,17 +150,22 @@ $(document).ready(function() {
 
             newSess.on('muted', function(e) {
                 console.log("muted")
+                $('#cMute').removeClass('fa-microphone-slash').addClass('fa-microphone');
                 ctxSip.Sessions[newSess.ctxid].isMuted = true;
                 ctxSip.setCallSessionStatus("Muted");
             });
 
             newSess.on('unmuted', function(e) {
                 console.log("unmuted")
+                $('#cMute').removeClass('fa-microphone').addClass('fa-microphone-slash');
                 ctxSip.Sessions[newSess.ctxid].isMuted = false;
                 ctxSip.setCallSessionStatus("Answered");
             });
 
             newSess.on('cancel', function(e) {
+                $('#btn-call-center').css('display', 'block');
+                $('#btn-call-left').css('display', 'none');
+                $('#btn-call-right').css('display', 'none');
                 ctxSip.stopRingTone();
                 ctxSip.stopRingbackTone();
                 ctxSip.setCallSessionStatus("Canceled");
@@ -172,7 +177,10 @@ $(document).ready(function() {
             });
 
             newSess.on('bye', function(e) {
-                console.log("bye")
+           
+                $('#btn-call-center').css('display', 'block');
+                $('#btn-call-left').css('display', 'none');
+                $('#btn-call-right').css('display', 'none');
                 ctxSip.stopRingTone();
                 ctxSip.stopRingbackTone();
                 ctxSip.setCallSessionStatus("");
@@ -182,12 +190,19 @@ $(document).ready(function() {
             });
 
             newSess.on('failed',function(e) {
+                $('#btn-call-center').css('display', 'block');
+                $('#btn-call-left').css('display', 'none');
+                $('#btn-call-right').css('display', 'none');
                 ctxSip.stopRingTone();
                 ctxSip.stopRingbackTone();
                 ctxSip.setCallSessionStatus('Terminated');
             });
 
             newSess.on('rejected',function(e) {
+                
+                $('#btn-call-center').css('display', 'block');
+                $('#btn-call-left').css('display', 'none');
+                $('#btn-call-right').css('display', 'none');
                 ctxSip.stopRingTone();
                 ctxSip.stopRingbackTone();
                 ctxSip.setCallSessionStatus('Rejected');
@@ -697,7 +712,6 @@ $(document).ready(function() {
     });
 
     $( "#btnMute" ).click(function() {
-  
         ctxSip.phoneMuteButtonPressed(userTarget);
       
     });
