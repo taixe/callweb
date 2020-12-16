@@ -109,7 +109,7 @@
         let vehicleType = params.get('vehicleType')
         let avatar = params.get('avatar')
         let fleetId = params.get('fleetId')
-        localStorage.setItem('phone', phone);
+        localStorage.setItem('phone', phoneVoip);
 
 
         document.getElementById('driver-name-phone').innerHTML = driverName.length>15?driverName.substring(0, 15)+"..."+ " | " +phone:driverName + " | " +phone ;
