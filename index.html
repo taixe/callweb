@@ -103,13 +103,13 @@
         let userId = params.get('userId')
 
         let driverName = params.get('driverName')
-        let phone = "+"+params.get('phone')
+        let phone = params.get('phone').replace(" ", "+") 
         let plateNumber = params.get('plateNumber')
         let vehicleType = params.get('vehicleType')
         let avatar = params.get('avatar')
+        let fleetId = params.get('fleetId')
+        localStorage.setItem('phone', phone);
 
-
-        
 
         document.getElementById('driver-name-phone').innerHTML = driverName.length>15?driverName.substring(0, 15)+"..."+ " | " +phone:driverName + " | " +phone ;
         document.getElementById('vehicletype-platenumber').innerHTML = vehicleType + " | " +plateNumber ;
