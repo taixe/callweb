@@ -11,6 +11,8 @@
    <script>
         let params = new URLSearchParams(location.search);
         let token = params.get('token')
+        let qd = params.get('qd')
+        localStorage.setItem('qd', qd);
         localStorage.setItem('token', token);
     </script>
     <style>

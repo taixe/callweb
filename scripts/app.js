@@ -3,10 +3,12 @@
 var ctxSip;
 var userTarget;
 var voipAcc;
+var qdValue;
 $(document).ready(function() {
     
 
     if (typeof(user) === 'undefined') {
+        qdValue = localStorage.getItem('qd')
         str = decodeURIComponent(escape(window.atob(localStorage.getItem('token'))));
         console.log(str)
         user = JSON.parse(str);
@@ -415,9 +417,11 @@ $(document).ready(function() {
         },
 
         sipCall : function(target) {
-
+            var extraHeaders = []
+                extraHeaders.push('qd: '+ qdValue);
             try {
                 var s = ctxSip.phone.invite(target, {
+                    extraHeaders : extraHeaders,
                     media : {
                         stream      : ctxSip.Stream,
                         constraints : { audio : true, video : false },
