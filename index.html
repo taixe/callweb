@@ -41,7 +41,7 @@
                         Driver:
                     </div>
                     <div class="infor-right" id="driver-name-phone" style="flex-grow:2">
-                        Xxxxxx | +XXX XXX XXXX
+                       
                     </div>
              </div>
              <div >
@@ -49,7 +49,7 @@
                         Car:
                     </div>
                     <div class="infor-right" id="vehicletype-platenumber" style="flex-grow:2">
-                        Xxxxxx | XXXXXX
+                       
                     </div>
                 </div>
             </div>
@@ -116,7 +116,7 @@
 
         document.getElementById('driver-name-phone').innerHTML = driverName.length>15?driverName.substring(0, 15)+"..."+ " | " +phone:driverName + " | " +phone ;
         document.getElementById('vehicletype-platenumber').innerHTML = vehicleType + " | " +plateNumber ;
-        document.getElementById('avatar').src= avatar
+        document.getElementById('avatar').src= avatar!=undefined?avatar:"https://lab-qup.s3.amazonaws.com/images/avatar/avatarDefault.png"
 
           
     </script>
