@@ -116,7 +116,7 @@
 
         document.getElementById('driver-name-phone').innerHTML = driverName.length>15?driverName.substring(0, 15)+"..."+ " | " +phone:driverName + " | " +phone ;
         document.getElementById('vehicletype-platenumber').innerHTML = vehicleType + " | " +plateNumber ;
-        document.getElementById('avatar').src= avatar!=undefined?avatar:"https://lab-qup.s3.amazonaws.com/images/avatar/avatarDefault.png"
+        document.getElementById('avatar').src= avatar!="undefined"?avatar:"https://lab-qup.s3.amazonaws.com/images/avatar/avatarDefault.png"
 
           
     </script>
