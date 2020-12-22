@@ -8,7 +8,28 @@
 <script>
 var myWindow;
 function openWin() {
-  myWindow = window.open("https://webcall.api-pro.xyz?driverName=DuyPhan&phone=+0944889705&plateNumber=92K-12345&vehicleType=Sedan&avatar=https://photographer.com.vn/wp-content/uploads/2020/08/1596889696_Anh-avatar-dep-va-doc-dao-lam-hinh-dai-dien.jpg&token=eyAiVXNlciIgOiAiZHV5MSIsICJQYXNzIiA6ICIxMjM0NSIsICJSZWFsbSIgICA6ICJxYS52b2lwLnF1cC52biIsICJEaXNwbGF5IiA6ICJEdXkgUGhhbiIsICJXU1NlcnZlciIgIDogIndzczovL3FhLnZvaXAucXVwLnZuOjQ0NDMiIH0=", "myWindow", "width=430,height=223");
+	var name = "webVoip" 
+	var url = 'https://webvoip.qup.vn/?token=eyJkb21haW4iOiJjY3ZvaXAudm9pcC5xdXAudm4iLCJpZCI6NzY3NjEsInBhc3N3b3JkIjoiWDg5Q1hKIiwidXNlcm5hbWUiOiI1OGMwZmJlM2U0YjBmMTJmMDZkNjNhNzYifQ==&fleetId=yumi&driverName=DUY%20PHAN&phone=+601110515951&plateNumber=VCH6297&vehicleType=Da%20Nang,%20Vietnam&avatar=https://lab-qup.s3.amazonaws.com/images/avatar/avatarDefault.png&qd=6'
+     var width  = 430;
+     var height = 240;
+     var left   = 460;
+     var top    = 100;
+     var params = 'width='+width+', height='+height;
+     params += ', top='+top+', left='+left;
+     params += ', directories=no';
+     params += ', location=no';
+     params += ', menubar=no';
+     params += ', resizable=no';
+     params += ', scrollbars=no';
+     params += ', status=no';
+     params += ', toolbar=no';
+      var newWin  = window.open(url, name, params);
+      if(!newWin || newWin.closed || typeof newWin.closed=='undefined') 
+      { 
+          //POPUP BLOCKED
+      }
+
+  // myWindow = window.open("https://webvoip.qup.vn/?token=eyJkb21haW4iOiJjY3ZvaXAudm9pcC5xdXAudm4iLCJpZCI6NzY3NjEsInBhc3N3b3JkIjoiWDg5Q1hKIiwidXNlcm5hbWUiOiI1OGMwZmJlM2U0YjBmMTJmMDZkNjNhNzYifQ==&fleetId=yumi&driverName=DUY%20PHAN&phone=+601110515951&plateNumber=VCH6297&vehicleType=Da%20Nang,%20Vietnam&avatar=https://lab-qup.s3.amazonaws.com/images/avatar/avatarDefault.png&qd=6", "myWindow", " addressbar=0 ,width=430,height=223");
   
 }
 

@@ -105,7 +105,7 @@ $(document).ready(function() {
                 status = "Incoming: "+ newSess.displayName;
                 ctxSip.startRingTone();
             } else {
-                status = "Trying: "+ newSess.displayName;
+                status = "Calling ... "+ localStorage.getItem('driverName');
                 ctxSip.startRingbackTone();
             }
 
@@ -135,7 +135,7 @@ $(document).ready(function() {
 
                 ctxSip.stopRingbackTone();
                 ctxSip.stopRingTone();
-                ctxSip.setCallSessionStatus('Answered');
+                ctxSip.setCallSessionStatus('In call');
                 ctxSip.logCall(newSess, 'answered');
                 ctxSip.callActiveID = newSess.ctxid;
             });
@@ -161,7 +161,7 @@ $(document).ready(function() {
                 console.log("unmuted")
                 $('#cMute').removeClass('fa-microphone').addClass('fa-microphone-slash');
                 ctxSip.Sessions[newSess.ctxid].isMuted = false;
-                ctxSip.setCallSessionStatus("Answered");
+                ctxSip.setCallSessionStatus("In call");
             });
 
             newSess.on('cancel', function(e) {
@@ -170,7 +170,7 @@ $(document).ready(function() {
                 $('#btn-call-right').css('display', 'none');
                 ctxSip.stopRingTone();
                 ctxSip.stopRingbackTone();
-                ctxSip.setCallSessionStatus("Canceled");
+                ctxSip.setCallSessionStatus("Call declined");
                 if (this.direction === 'outgoing') {
                     ctxSip.callActiveID = null;
                     newSess             = null;
@@ -197,7 +197,7 @@ $(document).ready(function() {
                 $('#btn-call-right').css('display', 'none');
                 ctxSip.stopRingTone();
                 ctxSip.stopRingbackTone();
-                ctxSip.setCallSessionStatus('Terminated');
+                ctxSip.setCallSessionStatus('Idle');
             });
 
             newSess.on('rejected',function(e) {
@@ -207,7 +207,7 @@ $(document).ready(function() {
                 $('#btn-call-right').css('display', 'none');
                 ctxSip.stopRingTone();
                 ctxSip.stopRingbackTone();
-                ctxSip.setCallSessionStatus('Rejected');
+                ctxSip.setCallSessionStatus('Call declined');
                 ctxSip.callActiveID = null;
                 ctxSip.logCall(this, 'ended');
                 newSess             = null;
@@ -567,9 +567,9 @@ $(document).ready(function() {
             } else if (navigator.getUserMedia) {
                 return true;
             } else {
-                ctxSip.setError(true, 'Unsupported Browser.', 'Your browser does not support the features required for this phone.');
-                window.console.error("WebRTC support not found");
-                return false;
+                // ctxSip.setError(true, 'Unsupported Browser.', 'Your browser does not support the features required for this phone.');
+                // window.console.error("WebRTC support not found");
+                return true;
             }
         }
     };
