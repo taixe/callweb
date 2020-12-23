@@ -135,7 +135,7 @@ $(document).ready(function() {
 
                 ctxSip.stopRingbackTone();
                 ctxSip.stopRingTone();
-                ctxSip.setCallSessionStatus('In call');
+                ctxSip.setCallSessionStatus('In call - ');
                 ctxSip.logCall(newSess, 'answered');
                 ctxSip.callActiveID = newSess.ctxid;
             });
@@ -170,7 +170,7 @@ $(document).ready(function() {
                 $('#btn-call-right').css('display', 'none');
                 ctxSip.stopRingTone();
                 ctxSip.stopRingbackTone();
-                ctxSip.setCallSessionStatus("Call declined");
+                ctxSip.setCallSessionStatus("Canceled");
                 if (this.direction === 'outgoing') {
                     ctxSip.callActiveID = null;
                     newSess             = null;
@@ -185,7 +185,7 @@ $(document).ready(function() {
                 $('#btn-call-right').css('display', 'none');
                 ctxSip.stopRingTone();
                 ctxSip.stopRingbackTone();
-                ctxSip.setCallSessionStatus("");
+                ctxSip.setCallSessionStatus("Idle");
                 ctxSip.logCall(newSess, 'ended');
                 ctxSip.callActiveID = null;
                 newSess             = null;
@@ -197,7 +197,7 @@ $(document).ready(function() {
                 $('#btn-call-right').css('display', 'none');
                 ctxSip.stopRingTone();
                 ctxSip.stopRingbackTone();
-                ctxSip.setCallSessionStatus('Idle');
+                //ctxSip.setCallSessionStatus('Idle');
             });
 
             newSess.on('rejected',function(e) {
@@ -355,7 +355,7 @@ $(document).ready(function() {
 
             // Start call timer on answer
             if (item.status === 'answered') {
-                var tEle = document.getElementById(item.id);
+                var tEle = document.getElementById('txtCallStatus');
                 ctxSip.callTimers[item.id] = new Stopwatch(tEle);
                 ctxSip.callTimers[item.id].start();
             }
@@ -800,6 +800,7 @@ $(document).ready(function() {
      * @param {[object]} options
      */
     var Stopwatch = function(elem, options) {
+        console.log(elem)
 
         // private functions
         function createTimer() {
