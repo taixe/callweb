@@ -67,8 +67,18 @@ margin-bottom: 5px;
 
 }
 #content{
-width: 100%;
+width: 160px;
 min-height: 80px;
+
+float:center;
+margin-left: 5px;
+margin-right: 5px;
+margin-bottom: 5px;
+}
+#centerbutton{
+width: 160px;
+min-height: 80px;
+
 
 float:center;
 margin-left: 5px;
