@@ -116,7 +116,7 @@
         localStorage.setItem('driverName', driverName);
 
 
-        document.getElementById('driver-name-phone').innerHTML = driverName.length>15?driverName.substring(0, 15)+"..."+ " | " +phone:driverName + " 12345678900987654321234567890-098765432123456789098765432123456789| " +phone ;
+        document.getElementById('driver-name-phone').innerHTML = driverName + " | " +phone ;
         document.getElementById('vehicletype-platenumber').innerHTML = vehicleType + " | " +plateNumber ;
         document.getElementById('avatar').src= avatar
 
