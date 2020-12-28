@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://ctynhanhoa.vfone.vn/callnew.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+           
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./callnew.php_files/all.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./callnew.php_files/fontawesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./callnew.php_files/icon.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./callnew.php_files/main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./callnew.php_files/bootstrap.min.css">
+    <link href="./callnew.php_files/css" rel="stylesheet">
+     <link type="text/css" rel="stylesheet" href="./callnew.php_files/toastr.min.css">
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" type="text/css" href="./callnew.php_files/slick-theme.css">
+    <link type="text/css" rel="stylesheet" href="./callnew.php_files/jquery-ui.min.css">
+    <link type="text/css" rel="stylesheet" href="./callnew.php_files/jquery-ui.theme.min.css">
+  
+    <script type="text/javascript" src="./callnew.php_files/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./callnew.php_files/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./callnew.php_files/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./callnew.php_files/toastr.min.js"></script>
+    
+     <script type="text/javascript" src="./callnew.php_files/timer.jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="/plugin/sip-0.13.6.min.js"></script> -->
+    <script type="text/javascript" src="./callnew.php_files/vfone-call.js"></script>
+    <script type="text/javascript" src="./callnew.php_files/jquery-3.2.0.min.js"></script>
+    <script src="./callnew.php_files/DetectRTC.js"></script>
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.990.0" data-gr-ext-installed="">
+    <div class="wrapper">
+  <div class="container">
+    
+    
+    <form class="form">
+      <p class="inter-call" style="font-size: 100%;padding: 0 15%;width: 100%;">Cho phép sử dụng micro và loa của thiết bị để gọi miễn phí vào tổng đài. Đeo tai nghe và micro để nghe/nói rõ hơn trên thiết bị di động</p>
+      <h1 class="title-header">GỌI MIỄN PHÍ</h1>
+      <div class="content">
+      <input type="text" name="fullname" id="fullname" placeholder="Tên của bạn">
+       <input type="text" name="phone_num" id="phone_num" placeholder="Số điện thoại">
+      <button type="button" id="call-button" style="font-weight: bold;font-size: 28px;">GỌI</button>
+      </div>
+       <div id="time_call"></div>
+       <div id="key_button">
+        <input type="input" name="list_key" id="list_key" disabled="disabled" placeholder="Nhập phím ảo ở dưới">
+         <div class="col-xs-12 col-sm-12 col-md-12">
+           <button class="col-md-4 col-sm-4 col-xs-4 text-center item2" data-id="1" type="button">1</button>
+           <button class="col-md-4 col-sm-4 col-xs-4 text-center item2" data-id="2" type="button">2</button>
+           <button class="col-md-4 col-sm-4 col-xs-4 text-center item2" data-id="3" type="button">3</button>
+           <button class="col-md-4 col-sm-4 col-xs-4 text-center item2" data-id="4" type="button">4</button>
+           <button class="col-md-4 col-sm-4 col-xs-4 text-center item2" data-id="5" type="button">5</button>
+           <button class="col-md-4 col-sm-4 col-xs-4 text-center item2" data-id="6" type="button">6</button>
+           <button class="col-md-4 col-sm-4 col-xs-4 text-center item2" data-id="7" type="button">7</button>
+           <button class="col-md-4 col-sm-4 col-xs-4 text-center item2" data-id="8" type="button">8</button>
+           <button class="col-md-4 col-sm-4 col-xs-4 text-center item2" data-id="9" type="button">9</button>
+           <button class="col-md-4 col-sm-4 col-xs-4 text-center item2" data-id="*" type="button">*</button>
+           <button class="col-md-4 col-sm-4 col-xs-4 text-center item2" data-id="0" type="button">0</button>
+           <button class="col-md-4 col-sm-4 col-xs-4 text-center item2" data-id="#" type="button">#</button>
+         </div>
+       </div>
+        <div class="button off"></div>
+    </form>
+   
+  </div>
+  <!-- tao hieu ung -->
+  <ul class="bg-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+<script type="text/javascript">
+  function call(data,name,number){
+     var jqxhr = $.post('getdata.php',data,function(res){},'json');
+     jqxhr.done(function(res){
+
+        if(res.type=='success')
+        {
+          $('.content').fadeOut(500);
+          $('.wrapper').addClass('form-success');
+          $('.inter-call').html('');
+          $('.title-header').html('Đang gọi ...');
+          $('.button').html('<button type="button" class="btn btn-danger" id="Hangup">Kết Thúc</button>');
+          var ten = name+'<'+number+'>';
+           var remoteVideo = document.createElement('video');
+          remoteVideo.autoplay = true;
+          remoteVideo.setAttribute('playsinline', 'playsinline');
+
+          var user_call = res.user;
+          var myUA = new SIP.UA({
+            uri: res.user+'@'+res.url+':51000',
+            password: res.pass,
+            displayName : ten,
+            transportOptions:{
+              traceSip : false,
+              wsServers: ['wss://'+res.url+':51089/ws']
+            },
+            register: false
+            ,log: { builtinEnabled: false }
+            ,userAgentString: res.user_agent
+            //,userAgentString:myIP
+          });
+
+          session = myUA.invite(user_call, {
+            sessionDescriptionHandlerOptions: {
+              constraints: {
+                audio: true,
+                video: false
+              }
+            }
+          });
+          
+          if (session.on){
+            $('#time_call').css('margin','0 0 10px 15px');
+            $('#time_call').css('font-size','25px');
+            session.on('trackAdded', function() {
+              // console.log('------------------------------tesst---------------------');
+              var pc = session.sessionDescriptionHandler.peerConnection;
+              var remoteStream = new MediaStream();
+              pc.getReceivers().forEach(function(receiver) {
+                remoteStream.addTrack(receiver.track);
+              });
+              remoteVideo.srcObject = remoteStream;
+            });
+            session.on('accepted', function (data) {
+              $('.list-button').html('<button type="button" style="width:95px" class="btn btn-danger" id="Hangup">Kết Thúc</button>');
+            });
+            session.on('progress', function (response) {
+              // console.log('progress=================================');
+              $('.content').html('Đã kết nôi.Đang rung chuông...');
+              $('.list-button').html('<button type="button" style="width:95px"  class="btn btn-danger" id="Hangup">Kết Thúc</button>');
+               $('#key_button').show();
+            })
+            session.on('rejected', function (response, cause) {
+              $('.title-header').html('Đang gọi ...');
+              // console.log('rejected=================================');
+            });
+            session.on('failed', function (request) {
+              // console.log(request);
+              // var cause = request.cause; //sometimes this is request.reason_phrase
+              // if (cause === SIP.C.causes.REJECTED) {
+              //   bob.message('alice@example.com', 'Please, call me later!');
+              // }
+              $('.content').html("Kết thúc cuộc gọi, Cuộc gọi bị lỗi");
+
+              $('.list-button').html('<button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>');
+              // console.log('failed===============ádsadasd==================');
+            });
+            session.on('terminated', function (message, cause) {
+              window.location.reload();
+              toastr.warning("Lỗi terminated ");
+              console.log('terminated===============ádsadasd==================');
+              $('#key_button').hide();
+              window.close();
+            });
+            session.on('cancel', function () {
+             
+              $('#key_button').hide();
+              $('.content').html("Kết thúc cuộc gọi, Không bắt máy");
+              $('.list-button').html('<button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>');
+               window.close();
+              // console.log('cancel=================================');
+              //document.getElementById('Call').innerHTML='Call';
+            });
+            session.on('reinvite', function (ssdata) {
+              $('.title-header').html('Đang thông thoại');
+              $('#time_call').timer({format:'%M:%S'});
+              // console.log('reinvite=================================');
+            })
+            session.on('referRequested', function (context) {
+              // console.log('referRequested=================================');
+            });
+            session.on('replaced', function (newSession) {
+              // console.log('replaced=================================');
+            });
+            session.on('dtmf', function (request, dtmf) {
+              // console.log(dtmf,'----',request,'dtmf=================================');
+            });
+            session.on('bye', function (request) {
+              window.location.reload();
+              window.close();
+
+              console.log('bye=================================');
+            });
+            session.on('directionChanged', function() {
+              //  $('.content').html("Kết thúc cuộc gọi, Không bắt máy");
+              // $('.list-button').html('<button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>');
+              // console.log('directionChanged=============================');
+            });
+          }
+          // deleteCookie('domain');
+          // deleteCookie('appid');
+        }else{
+          toastr.error(res.message);
+        }
+      });
+    $(document).on('click','.item2', function() {
+      var list=['0','1','2','3','4','5','6','7','8','9','*','#'];
+      var id  = $(this).attr('data-id');
+      var cou = list.indexOf(id);
+      if(cou>=0)
+      {
+         session.dtmf(''+id+'');
+      }
+      
+    });
+    $(document).on('click','#Hangup', function() {
+      var cf = confirm("Bạn có muốn kết thúc cuộc gọi");
+      if(cf){
+         $('.content').html("Kết thúc cuộc gọi, Không bắt máy");
+         $('.list-button').html('<button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>');
+          session.terminate();
+          $('#key_button').hide();
+        // $('#modal-call-free').modal('hide');
+      }
+    });
+  }
+ $(function(){
+    var domain = (getAllUrlParams().host)?getAllUrlParams().host:'';
+    var appid = (getAllUrlParams().appid)?getAllUrlParams().appid:'';
+    if(domain!=''&& appid!='')
+    {
+      var hostname = window.location.hostname;
+      window.location.href="https://"+hostname+"/callnew.php";
+    }
+    var session = {};
+    $(document).on('click','.item2',function(){
+      var text = $('#list_key').val();
+      var data = $(this).attr('data-id');
+      var newd = text+''+data;
+      $('#list_key').val(newd);
+    })
+    $(document).on('click','#call-button', function(event){
+    var number = $('#phone_num').val();
+    var name = $('#fullname').val();
+    if(!name){
+      toastr.info("Vui lòng nhập tên");
+      return false;
+    }
+    if(!number){
+      toastr.info("Vui lòng nhập số điện thoại");
+      return false;
+    }
+   
+    var data={'action':'getdata'}
+    var check = 0;
+    DetectRTC.load(() => { 
+      // console.log(DetectRTC.hasSpeakers);
+      if (DetectRTC.hasMicrophone === false) {
+         toastr.warning('Bạn không có microphone nên không thể thực hiện cuộc gọi. Kiểm tra lại microphone');
+         check=1;
+         return false;
+      }
+      if (DetectRTC.hasSpeakers === false && (DetectRTC.browser.name === 'Chrome' || DetectRTC.browser.name === 'Edge')) {
+          toastr.warning('Không có loa. Vui lòng kiểm tra lại');
+          check=1;
+          // alert('Oops, your system can not play audios.');
+          return false;
+      }
+      call(data,name,number);
+      // console.log("echk 1",check);
+    });     
+  }); 
+  }); 
+</script>
+<style>
+  #key_button{
+    
+    display: none;
+  }
+  #key_button input#list_key{
+
+  }
+  #key_button button{
+    border-radius: 25px;
+    border:1px solid ;
+        margin: 3px 0px;
+  }
+  
+    @font-face {
+    /*font-family: 'Source Sans Pro';*/
+    font-style: normal;
+    font-weight: 200;
+   /* src: local('Source Sans Pro ExtraLight'), local('SourceSansPro-ExtraLight'), url(https://fonts.gstatic.com/s/sourcesanspro/v12/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wlxdr.ttf) format('truetype');*/
+  }
+  @font-face {
+    /*font-family: 'Source Sans Pro';*/
+    font-style: normal;
+    font-weight: 300;
+    /*src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v12/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdr.ttf) format('truetype');*/
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+  }
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    font-weight: 300;
+  }
+  body ::-webkit-input-placeholder {
+    /* WebKit browsers */
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    font-weight: 300;
+  }
+  body :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    opacity: 1;
+    font-weight: 300;
+  }
+  body ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    opacity: 1;
+    font-weight: 300;
+  }
+  body :-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    font-weight: 300;
+  }
+  .wrapper {
+    background: #50a3a2;
+    background: linear-gradient(to bottom right, #F36F2B 0%, #FF882A 100%);
+    position: absolute;
+    /*top: 50%;*/
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*margin-top: -200px;*/
+    overflow: hidden;
+  }
+  .wrapper.form-success .container h1 {
+    -webkit-transform: translateY(-11px);
+            transform: translateY(-11px);
+  }
+  #time_call{
+    font-size: 30px;
+    margin: 48px;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 0;
+    height: 400px;
+    text-align: center;
+  }
+  .container h1 {
+    font-size: 25px;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-put;
+    font-weight: 200;
+  }
+  form {
+    padding: 0;
+    position: relative;
+    z-index: 2;
+  }
+  form input {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    outline: 0;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 250px;
+    border-radius: 3px;
+    padding: 10px 15px;
+    margin: 0 auto 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    transition-duration: 0.25s;
+    font-weight: 300;
+  }
+  form input:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  form input:focus {
+    background-color: white;
+    width: 300px;
+    color: #53e3a6;
+  }
+  form button {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    outline: 0;
+    background-color: white;
+    border: 0;
+    padding: 10px 15px;
+    color: #0E6394;
+    border-radius: 3px;
+    width: 250px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition-duration: 0.25s;
+  }
+  button.off{
+    width: 95px;
+    margin-top:15px;
+  }
+  form button:hover {
+    background-color: #f5f7f9;
+  }
+  .bg-bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .bg-bubbles li {
+    position: absolute;
+    list-style: none;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.15);
+    bottom: -160px;
+    -webkit-animation: square 25s infinite;
+    animation: square 25s infinite;
+    transition-timing-function: linear;
+  }
+  .bg-bubbles li:nth-child(1) {
+    left: 10%;
+  }
+  .bg-bubbles li:nth-child(2) {
+    left: 20%;
+    width: 80px;
+    height: 80px;
+    -webkit-animation-delay: 2s;
+            animation-delay: 2s;
+    -webkit-animation-duration: 17s;
+            animation-duration: 17s;
+  }
+  .bg-bubbles li:nth-child(3) {
+    left: 25%;
+    -webkit-animation-delay: 4s;
+            animation-delay: 4s;
+  }
+  .bg-bubbles li:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    -webkit-animation-duration: 22s;
+            animation-duration: 22s;
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+  .bg-bubbles li:nth-child(5) {
+    left: 70%;
+  }
+  .bg-bubbles li:nth-child(6) {
+    left: 80%;
+    width: 120px;
+    height: 120px;
+    -webkit-animation-delay: 3s;
+            animation-delay: 3s;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  .bg-bubbles li:nth-child(7) {
+    left: 32%;
+    width: 160px;
+    height: 160px;
+    -webkit-animation-delay: 7s;
+            animation-delay: 7s;
+  }
+  .bg-bubbles li:nth-child(8) {
+    left: 55%;
+    width: 20px;
+    height: 20px;
+    -webkit-animation-delay: 15s;
+            animation-delay: 15s;
+    -webkit-animation-duration: 40s;
+            animation-duration: 40s;
+  }
+  .bg-bubbles li:nth-child(9) {
+    left: 25%;
+    width: 10px;
+    height: 10px;
+    -webkit-animation-delay: 2s;
+            animation-delay: 2s;
+    -webkit-animation-duration: 40s;
+            animation-duration: 40s;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  .bg-bubbles li:nth-child(10) {
+    left: 90%;
+    width: 160px;
+    height: 160px;
+    -webkit-animation-delay: 11s;
+            animation-delay: 11s;
+  }
+  @-webkit-keyframes square {
+    0% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+    }
+    100% {
+      -webkit-transform: translateY(-700px) rotate(600deg);
+              transform: translateY(-700px) rotate(600deg);
+    }
+  }
+  @keyframes square {
+    0% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+    }
+    100% {
+      -webkit-transform: translateY(-700px) rotate(600deg);
+              transform: translateY(-700px) rotate(600deg);
+    }
+  }
+
+    .main-page{
+      min-width: 320px;
+      max-width: 414px;
+    }
+    #form-call{
+      padding: 10%;
+    }
+    .list-button button{
+      border: none;
+      background: #fff;
+    }
+    .list-button button img{
+      width: 50px;
+    }
+    h3.title{
+      text-align: center;
+    background: #0e6394;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+    }
+    body{
+          background: rgba(255,255,255);
+        }
+</style>
+  
+
+    
+</body></html>

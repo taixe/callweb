@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('https://i.icomoon.io/public/78b709aad2/SkullcandyBigCommerce/icomoon.eot?11ndga');
+  src:  url('https://i.icomoon.io/public/78b709aad2/SkullcandyBigCommerce/icomoon.eot?11ndga#iefix') format('embedded-opentype'),
+    url('icomoon.woff2') format('woff2'),
+    url('https://i.icomoon.io/public/78b709aad2/SkullcandyBigCommerce/icomoon.ttf?11ndga') format('truetype'),
+    url('https://i.icomoon.io/public/78b709aad2/SkullcandyBigCommerce/icomoon.woff?11ndga') format('woff'),
+    url('https://i.icomoon.io/public/78b709aad2/SkullcandyBigCommerce/icomoon.svg?11ndga#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {*/
+  /* use !important to prevent issues with browser extensions that change fonts */
+ font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+   Better Font Rendering =========== 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-envelope:before {
+  content: "\e903";
+}
+.icon-cart:before {
+  content: "\e900";
+}
+.icon-star-empty:before {
+  content: "\e9d7";
+}
+.icon-star-half:before {
+  content: "\e9d8";
+}
+.icon-star-full:before {
+  content: "\e9d9";
+}
+.icon-heart:before {
+  content: "\e9da";
+}
+.icon-play2:before {
+  content: url(../images/play-button.png);
+  font-size:13px;
+}
+.icon-pause:before {
+  content: url(../images/pause.png);
+  font-size:13px;
+}
+.icon-facebook:before {
+  content: "\ea90";
+}
+.icon-facebook2:before {
+  content: "\ea91";
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-youtube:before {
+  content: "\ea9d";
+}
+.icon-pinterest:before {
+  content: "\ead1";
+}
+.icon-pinterest2:before {
+  content: "\ead2";
+}
+.icon-zoom-in:before {
+  content: "\eb31";
+}
+.icon-zoom-in2:before {
+  content: "\eb34";
+}
+.icon-user:before {
+  content: "\e902";
+}
+.icon-search:before {
+  content: "\e901";
+}
