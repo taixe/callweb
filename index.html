@@ -26,7 +26,7 @@
 <div class="container-fluid">
 
     <div class="clearfix sipStatus">
-        <div id="txtCallStatus" class="pull-right">&nbsp; </div>
+         <div id="txtCallTime" class="pull-right" style="margin-left: 2px"> </div><div id="txtCallStatus" class="pull-right"> </div>
         <div id="txtRegStatus"></div>
     </div>
     <center>
@@ -108,12 +108,14 @@
         let driverName = params.get('driverName')
         let phone = params.get('phone').replace(" ", "+") 
         let phoneVoip = params.get('phone').replace(" ", "+0") 
+        phoneVoip = phoneVoip.replace("+09", "+99") 
         let plateNumber = params.get('plateNumber')
         let vehicleType = params.get('vehicleType')
         let avatar = params.get('avatar')
         let fleetId = params.get('fleetId')
         localStorage.setItem('phone', phoneVoip);
         localStorage.setItem('driverName', driverName);
+        localStorage.setItem('fleetId', fleetId);
 
 
         document.getElementById('driver-name-phone').innerHTML = driverName + " | " +phone ;

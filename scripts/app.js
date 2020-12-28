@@ -10,14 +10,12 @@ $(document).ready(function() {
     if (typeof(user) === 'undefined') {
         qdValue = localStorage.getItem('qd')
         str = decodeURIComponent(escape(window.atob(localStorage.getItem('token'))));
-        console.log(str)
         user = JSON.parse(str);
 
+        var fleetId = localStorage.getItem('fleetId')
         var domain = user.domain.replace("ccvoip", fleetId);
         var phone = localStorage.getItem('phone');
         voipAcc = "sip:"+phone+"@"+domain;
-
-        console.log(user)
     }
 
     ctxSip = {
@@ -151,17 +149,17 @@ $(document).ready(function() {
             });
 
             newSess.on('muted', function(e) {
-                console.log("muted")
+               
                 $('#cMute').removeClass('fa-microphone-slash').addClass('fa-microphone');
                 ctxSip.Sessions[newSess.ctxid].isMuted = true;
-                ctxSip.setCallSessionStatus("Muted");
+                ctxSip.setCallSessionStatus("Muted - ");
             });
 
             newSess.on('unmuted', function(e) {
-                console.log("unmuted")
+               
                 $('#cMute').removeClass('fa-microphone').addClass('fa-microphone-slash');
                 ctxSip.Sessions[newSess.ctxid].isMuted = false;
-                ctxSip.setCallSessionStatus("In call");
+                ctxSip.setCallSessionStatus("In call - ");
             });
 
             newSess.on('cancel', function(e) {
@@ -219,7 +217,7 @@ $(document).ready(function() {
 
         // getUser media request refused or device was not present
         getUserMediaFailure : function(e) {
-            window.console.error('getUserMedia failed:', e);
+          
             ctxSip.setError(true, 'Media Error.', 'You must allow access to your microphone.  Check the address bar.', true);
         },
 
@@ -355,9 +353,13 @@ $(document).ready(function() {
 
             // Start call timer on answer
             if (item.status === 'answered') {
-                var tEle = document.getElementById('txtCallStatus');
+                var tEle = document.getElementById('txtCallTime');
                 ctxSip.callTimers[item.id] = new Stopwatch(tEle);
                 ctxSip.callTimers[item.id].start();
+                 $('#btn-call-left').removeClass("disabledbutton");
+            }else{
+                
+                $('#txtCallTime').html('');
             }
 
             if (callActive && item.status !== 'ringing') {
@@ -452,7 +454,7 @@ $(document).ready(function() {
         sipHangUp : function(sessionid) {
 
             var s = ctxSip.Sessions[sessionid];
-            console.log(s)
+           
             // s.terminate();
             if (!s) {
                 return;
@@ -485,7 +487,7 @@ $(document).ready(function() {
             var s      = ctxSip.Sessions[sessionid],
                 target = voipAcc
                 userTarget = voipAcc
-                console.log(voipAcc)
+                
             if (!s) {
 
                 $("#numDisplay").val("");
@@ -567,9 +569,11 @@ $(document).ready(function() {
             } else if (navigator.getUserMedia) {
                 return true;
             } else {
-                // ctxSip.setError(true, 'Unsupported Browser.', 'Your browser does not support the features required for this phone.');
-                // window.console.error("WebRTC support not found");
-                return true;
+                ctxSip.setError(true, 'Unsupported Browser.', 'Your browser does not support the features required for this phone.');
+                window.console.error("WebRTC support not found");
+                alert('This feature is not supported on this browser, please use another browser instead (Ex:Chrome, Firefox)')
+                window.close();
+                return false;
             }
         }
     };
@@ -702,6 +706,7 @@ $(document).ready(function() {
         $('#btn-call-center').css('display', 'none');
         $('#btn-call-left').css('display', 'block');
         $('#btn-call-right').css('display', 'block');
+        $('#btn-call-left').addClass("disabledbutton");
         ctxSip.phoneCallButtonPressed();
         
       
@@ -800,7 +805,7 @@ $(document).ready(function() {
      * @param {[object]} options
      */
     var Stopwatch = function(elem, options) {
-        console.log(elem)
+       
 
         // private functions
         function createTimer() {

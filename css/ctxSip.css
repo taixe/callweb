@@ -52,7 +52,10 @@ min-height: 60px;
 float:left;
 margin-bottom: 5px;
 }
-
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}
 #btn-call-right{
 width: 60;
 min-height: 60px;
