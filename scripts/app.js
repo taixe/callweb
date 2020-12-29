@@ -133,7 +133,7 @@ $(document).ready(function() {
 
                 ctxSip.stopRingbackTone();
                 ctxSip.stopRingTone();
-                ctxSip.setCallSessionStatus('In call - ');
+                ctxSip.setCallSessionStatus('In call');
                 ctxSip.logCall(newSess, 'answered');
                 ctxSip.callActiveID = newSess.ctxid;
             });
@@ -159,7 +159,7 @@ $(document).ready(function() {
                
                 $('#cMute').removeClass('fa-microphone').addClass('fa-microphone-slash');
                 ctxSip.Sessions[newSess.ctxid].isMuted = false;
-                ctxSip.setCallSessionStatus("In call - ");
+                ctxSip.setCallSessionStatus("In call");
             });
 
             newSess.on('cancel', function(e) {
